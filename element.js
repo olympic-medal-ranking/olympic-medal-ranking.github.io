@@ -1,10 +1,12 @@
 !(function () {
-    let src = "https://flagmeister.github.io/elements.flagmeister.min.js";
-    document.head.append(Object.assign(document.createElement("script"), {
-        src,
-        //async: true,
-        //onload: () => console.log(`Loaded ${src}`)
-    }));
+    if (!customElements.get("flag-olympic")) {
+        let src = "https://flagmeister.github.io/elements.flagmeister.min.js";
+        document.head.append(Object.assign(document.createElement("script"), {
+            src,
+            //async: true,
+            //onload: () => console.log(`Loaded ${src}`)
+        }));
+    }
 })();
 customElements.whenDefined("flag-olympic").then(() => {
     customElements.define("olympic-medal-ranking", class extends HTMLElement {
