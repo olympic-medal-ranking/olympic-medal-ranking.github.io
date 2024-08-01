@@ -39,7 +39,7 @@ customElements.whenDefined("flag-olympic").then(() => {
                 `<td colspan=5 class=header part=header><slot>${games} Olympic Medal Ranking</slot></td>` +
                 "</tr></thead><tbody>" +
                 // ---------------------------------------------------- call data API
-                (await (await fetch(API)).json())
+            (await (await fetch(API, { mode: "no-cors" })).json())
                     // loop all JSON results
                     .results.slice(0, total).map((result, idx) => {
                         // API will probably be different for future Olympics
@@ -63,7 +63,7 @@ customElements.whenDefined("flag-olympic").then(() => {
             // ================================================================ add interactivity
             [...this.shadowRoot.querySelectorAll("[id]")].map(c => {
                 c.onclick = () => {
-                    console.log(c.id, c.title);
+                    console.log(c.id, c.title); //todo: fix countrynames with spaces!
                     document.location = `https://olympics.com/en/paris-2024/medals/${c.title.toLowerCase()}`;
                 }
             });
