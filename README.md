@@ -1,5 +1,7 @@
 # live: https://olympic-medal-ranking.github.io
 
+**Data API by Kevin Le** - https://github.com/kevle1/paris-2024-olympic-api
+
 ### &lt;olympic-medal-ranking> Web Component
 
 ![alt text](https://res.cloudinary.com/practicaldev/image/fetch/s--tL2azJal--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://i.imgur.com/PurNqpH.png)
@@ -66,3 +68,7 @@
 ```
 
 ![alt text](https://res.cloudinary.com/practicaldev/image/fetch/s--b2ncys_W--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://i.imgur.com/cFMXnOD.png)
+
+
+
+# live: https://olympic-medal-ranking.github.io
