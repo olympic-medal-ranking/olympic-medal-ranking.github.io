@@ -1,0 +1,760 @@
+// 20240802105502
+// https://api.olympics.kevle.xyz/medals?iso_codes=true
+
+{
+  "last_updated": "2024-08-02T08:49:48.795888",
+  "length": 50,
+  "results": [
+    {
+      "country": {
+        "code": "CHN",
+        "iso_alpha_2": "CN",
+        "iso_alpha_3": "CHN",
+        "name": "China"
+      },
+      "medals": {
+        "bronze": 7,
+        "gold": 11,
+        "silver": 7,
+        "total": 25
+      },
+      "rank": 1
+    },
+    {
+      "country": {
+        "code": "USA",
+        "iso_alpha_2": "US",
+        "iso_alpha_3": "USA",
+        "name": "United States"
+      },
+      "medals": {
+        "bronze": 13,
+        "gold": 9,
+        "silver": 16,
+        "total": 38
+      },
+      "rank": 2
+    },
+    {
+      "country": {
+        "code": "FRA",
+        "iso_alpha_2": "FR",
+        "iso_alpha_3": "FRA",
+        "name": "France"
+      },
+      "medals": {
+        "bronze": 8,
+        "gold": 8,
+        "silver": 11,
+        "total": 27
+      },
+      "rank": 3
+    },
+    {
+      "country": {
+        "code": "AUS",
+        "iso_alpha_2": "AU",
+        "iso_alpha_3": "AUS",
+        "name": "Australia"
+      },
+      "medals": {
+        "bronze": 4,
+        "gold": 8,
+        "silver": 6,
+        "total": 18
+      },
+      "rank": 4
+    },
+    {
+      "country": {
+        "code": "JPN",
+        "iso_alpha_2": "JP",
+        "iso_alpha_3": "JPN",
+        "name": "Japan"
+      },
+      "medals": {
+        "bronze": 5,
+        "gold": 8,
+        "silver": 3,
+        "total": 16
+      },
+      "rank": 5
+    },
+    {
+      "country": {
+        "code": "GBR",
+        "iso_alpha_2": "GB",
+        "iso_alpha_3": "GBR",
+        "name": "Great Britain"
+      },
+      "medals": {
+        "bronze": 7,
+        "gold": 6,
+        "silver": 7,
+        "total": 20
+      },
+      "rank": 6
+    },
+    {
+      "country": {
+        "code": "KOR",
+        "iso_alpha_2": "KR",
+        "iso_alpha_3": "KOR",
+        "name": "Korea"
+      },
+      "medals": {
+        "bronze": 3,
+        "gold": 6,
+        "silver": 3,
+        "total": 12
+      },
+      "rank": 7
+    },
+    {
+      "country": {
+        "code": "ITA",
+        "iso_alpha_2": "IT",
+        "iso_alpha_3": "ITA",
+        "name": "Italy"
+      },
+      "medals": {
+        "bronze": 4,
+        "gold": 5,
+        "silver": 7,
+        "total": 16
+      },
+      "rank": 8
+    },
+    {
+      "country": {
+        "code": "CAN",
+        "iso_alpha_2": "CA",
+        "iso_alpha_3": "CAN",
+        "name": "Canada"
+      },
+      "medals": {
+        "bronze": 3,
+        "gold": 3,
+        "silver": 2,
+        "total": 8
+      },
+      "rank": 9
+    },
+    {
+      "country": {
+        "code": "GER",
+        "iso_alpha_2": "DE",
+        "iso_alpha_3": "DEU",
+        "name": "Germany"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 2,
+        "silver": 2,
+        "total": 6
+      },
+      "rank": 10
+    },
+    {
+      "country": {
+        "code": "NED",
+        "iso_alpha_2": "NL",
+        "iso_alpha_3": "NLD",
+        "name": "Netherlands"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 2,
+        "silver": 2,
+        "total": 6
+      },
+      "rank": 10
+    },
+    {
+      "country": {
+        "code": "NZL",
+        "iso_alpha_2": "NZ",
+        "iso_alpha_3": "NZL",
+        "name": "New Zealand"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 2,
+        "silver": 2,
+        "total": 5
+      },
+      "rank": 12
+    },
+    {
+      "country": {
+        "code": "ROU",
+        "iso_alpha_2": "RO",
+        "iso_alpha_3": "ROU",
+        "name": "Romania"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 2,
+        "silver": 1,
+        "total": 4
+      },
+      "rank": 13
+    },
+    {
+      "country": {
+        "code": "HKG",
+        "iso_alpha_2": "HK",
+        "iso_alpha_3": "HKG",
+        "name": "Hong Kong, China"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 2,
+        "silver": 0,
+        "total": 4
+      },
+      "rank": 14
+    },
+    {
+      "country": {
+        "code": "AZE",
+        "iso_alpha_2": "AZ",
+        "iso_alpha_3": "AZE",
+        "name": "Azerbaijan"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 2,
+        "silver": 0,
+        "total": 2
+      },
+      "rank": 15
+    },
+    {
+      "country": {
+        "code": "HUN",
+        "iso_alpha_2": "HU",
+        "iso_alpha_3": "HUN",
+        "name": "Hungary"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 1,
+        "silver": 2,
+        "total": 4
+      },
+      "rank": 16
+    },
+    {
+      "country": {
+        "code": "GEO",
+        "iso_alpha_2": "GE",
+        "iso_alpha_3": "GEO",
+        "name": "Georgia"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 1,
+        "silver": 2,
+        "total": 3
+      },
+      "rank": 17
+    },
+    {
+      "country": {
+        "code": "RSA",
+        "iso_alpha_2": "ZA",
+        "iso_alpha_3": "ZAF",
+        "name": "South Africa"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 1,
+        "silver": 1,
+        "total": 4
+      },
+      "rank": 18
+    },
+    {
+      "country": {
+        "code": "SUI",
+        "iso_alpha_2": "CH",
+        "iso_alpha_3": "CHE",
+        "name": "Switzerland"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 1,
+        "silver": 1,
+        "total": 4
+      },
+      "rank": 18
+    },
+    {
+      "country": {
+        "code": "SWE",
+        "iso_alpha_2": "SE",
+        "iso_alpha_3": "SWE",
+        "name": "Sweden"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 1,
+        "silver": 1,
+        "total": 4
+      },
+      "rank": 18
+    },
+    {
+      "country": {
+        "code": "BEL",
+        "iso_alpha_2": "BE",
+        "iso_alpha_3": "BEL",
+        "name": "Belgium"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 1,
+        "silver": 0,
+        "total": 3
+      },
+      "rank": 21
+    },
+    {
+      "country": {
+        "code": "IRL",
+        "iso_alpha_2": "IE",
+        "iso_alpha_3": "IRL",
+        "name": "Ireland"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 1,
+        "silver": 0,
+        "total": 3
+      },
+      "rank": 21
+    },
+    {
+      "country": {
+        "code": "KAZ",
+        "iso_alpha_2": "KZ",
+        "iso_alpha_3": "KAZ",
+        "name": "Kazakhstan"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 1,
+        "silver": 0,
+        "total": 3
+      },
+      "rank": 21
+    },
+    {
+      "country": {
+        "code": "CRO",
+        "iso_alpha_2": "HR",
+        "iso_alpha_3": "HRV",
+        "name": "Croatia"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 1,
+        "silver": 0,
+        "total": 2
+      },
+      "rank": 24
+    },
+    {
+      "country": {
+        "code": "GUA",
+        "iso_alpha_2": "GT",
+        "iso_alpha_3": "GTM",
+        "name": "Guatemala"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 1,
+        "silver": 0,
+        "total": 2
+      },
+      "rank": 24
+    },
+    {
+      "country": {
+        "code": "UZB",
+        "iso_alpha_2": "UZ",
+        "iso_alpha_3": "UZB",
+        "name": "Uzbekistan"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 1,
+        "silver": 0,
+        "total": 2
+      },
+      "rank": 24
+    },
+    {
+      "country": {
+        "code": "ARG",
+        "iso_alpha_2": "AR",
+        "iso_alpha_3": "ARG",
+        "name": "Argentina"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 1,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 27
+    },
+    {
+      "country": {
+        "code": "ECU",
+        "iso_alpha_2": "EC",
+        "iso_alpha_3": "ECU",
+        "name": "Ecuador"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 1,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 27
+    },
+    {
+      "country": {
+        "code": "SLO",
+        "iso_alpha_2": "SI",
+        "iso_alpha_3": "SVN",
+        "name": "Slovenia"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 1,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 27
+    },
+    {
+      "country": {
+        "code": "SRB",
+        "iso_alpha_2": "RS",
+        "iso_alpha_3": "SRB",
+        "name": "Serbia"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 1,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 27
+    },
+    {
+      "country": {
+        "code": "BRA",
+        "iso_alpha_2": "BR",
+        "iso_alpha_3": "BRA",
+        "name": "Brazil"
+      },
+      "medals": {
+        "bronze": 3,
+        "gold": 0,
+        "silver": 3,
+        "total": 6
+      },
+      "rank": 31
+    },
+    {
+      "country": {
+        "code": "PRK",
+        "iso_alpha_2": "KP",
+        "iso_alpha_3": "PRK",
+        "name": "DPR Korea"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 0,
+        "silver": 2,
+        "total": 2
+      },
+      "rank": 32
+    },
+    {
+      "country": {
+        "code": "ESP",
+        "iso_alpha_2": "ES",
+        "iso_alpha_3": "ESP",
+        "name": "Spain"
+      },
+      "medals": {
+        "bronze": 3,
+        "gold": 0,
+        "silver": 1,
+        "total": 4
+      },
+      "rank": 33
+    },
+    {
+      "country": {
+        "code": "POL",
+        "iso_alpha_2": "PL",
+        "iso_alpha_3": "POL",
+        "name": "Poland"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 0,
+        "silver": 1,
+        "total": 3
+      },
+      "rank": 34
+    },
+    {
+      "country": {
+        "code": "GRE",
+        "iso_alpha_2": "GR",
+        "iso_alpha_3": "GRC",
+        "name": "Greece"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 1,
+        "total": 2
+      },
+      "rank": 35
+    },
+    {
+      "country": {
+        "code": "ISR",
+        "iso_alpha_2": "IL",
+        "iso_alpha_3": "ISR",
+        "name": "Israel"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 1,
+        "total": 2
+      },
+      "rank": 35
+    },
+    {
+      "country": {
+        "code": "KOS",
+        "iso_alpha_2": "XK",
+        "iso_alpha_3": "UNK",
+        "name": "Kosovo"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 1,
+        "total": 2
+      },
+      "rank": 35
+    },
+    {
+      "country": {
+        "code": "MEX",
+        "iso_alpha_2": "MX",
+        "iso_alpha_3": "MEX",
+        "name": "Mexico"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 1,
+        "total": 2
+      },
+      "rank": 35
+    },
+    {
+      "country": {
+        "code": "TUR",
+        "iso_alpha_2": "TR",
+        "iso_alpha_3": "TUR",
+        "name": "Türkiye"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 1,
+        "total": 2
+      },
+      "rank": 35
+    },
+    {
+      "country": {
+        "code": "UKR",
+        "iso_alpha_2": "UA",
+        "iso_alpha_3": "UKR",
+        "name": "Ukraine"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 1,
+        "total": 2
+      },
+      "rank": 35
+    },
+    {
+      "country": {
+        "code": "FIJ",
+        "iso_alpha_2": "FJ",
+        "iso_alpha_3": "FJI",
+        "name": "Fiji"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 0,
+        "silver": 1,
+        "total": 1
+      },
+      "rank": 41
+    },
+    {
+      "country": {
+        "code": "MGL",
+        "iso_alpha_2": "MN",
+        "iso_alpha_3": "MNG",
+        "name": "Mongolia"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 0,
+        "silver": 1,
+        "total": 1
+      },
+      "rank": 41
+    },
+    {
+      "country": {
+        "code": "TUN",
+        "iso_alpha_2": "TN",
+        "iso_alpha_3": "TUN",
+        "name": "Tunisia"
+      },
+      "medals": {
+        "bronze": 0,
+        "gold": 0,
+        "silver": 1,
+        "total": 1
+      },
+      "rank": 41
+    },
+    {
+      "country": {
+        "code": "IND",
+        "iso_alpha_2": "IN",
+        "iso_alpha_3": "IND",
+        "name": "India"
+      },
+      "medals": {
+        "bronze": 3,
+        "gold": 0,
+        "silver": 0,
+        "total": 3
+      },
+      "rank": 44
+    },
+    {
+      "country": {
+        "code": "MDA",
+        "iso_alpha_2": "MD",
+        "iso_alpha_3": "MDA",
+        "name": "Republic of Moldova"
+      },
+      "medals": {
+        "bronze": 2,
+        "gold": 0,
+        "silver": 0,
+        "total": 2
+      },
+      "rank": 45
+    },
+    {
+      "country": {
+        "code": "AUT",
+        "iso_alpha_2": "AT",
+        "iso_alpha_3": "AUT",
+        "name": "Austria"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 46
+    },
+    {
+      "country": {
+        "code": "EGY",
+        "iso_alpha_2": "EG",
+        "iso_alpha_3": "EGY",
+        "name": "Egypt"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 46
+    },
+    {
+      "country": {
+        "code": "POR",
+        "iso_alpha_2": "PT",
+        "iso_alpha_3": "PRT",
+        "name": "Portugal"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 46
+    },
+    {
+      "country": {
+        "code": "SVK",
+        "iso_alpha_2": "SK",
+        "iso_alpha_3": "SVK",
+        "name": "Slovakia"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 46
+    },
+    {
+      "country": {
+        "code": "TJK",
+        "iso_alpha_2": "TJ",
+        "iso_alpha_3": "TJK",
+        "name": "Tajikistan"
+      },
+      "medals": {
+        "bronze": 1,
+        "gold": 0,
+        "silver": 0,
+        "total": 1
+      },
+      "rank": 46
+    }
+  ],
+  "source": "https://olympics.com/OG2024/data/CIS_MedalNOCs~lang=ENG~comp=OG2024.json"
+}
