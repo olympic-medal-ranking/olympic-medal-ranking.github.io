@@ -7,18 +7,19 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            max-width:1024px;
+            margin: 0 auto;
         }
     </style>
 </head>
 
 <body>
-    <h1>&lt;olympic-medal-ranking> Web Component</h1>
-    <p><a href="https://github.com/olympic-medal-ranking/olympic-medal-ranking.github.io">Documentation and code available
-            with the Unlicense
-            on GitHub</a></p>
+    <h1>One Web Component displays Olympic Medal Ranking</h1>
+    <h3><a href="https://github.com/olympic-medal-ranking/olympic-medal-ranking.github.io">
+            Documentation and code available on GitHub</a></h3>
 
+    <h2>&lt;olympic-medal-ranking>&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking></olympic-medal-ranking>
-
     <style id="PARTS">
         /* global CSS styles pre-defined "parts" inside shadowDOM */
         olympic-medal-ranking {
@@ -46,9 +47,13 @@
         }
     </style>
     <hr>
-    <h1>&lt;olympic-medal-ranking> Web Component with configuration attributes</h1>
+    <h2>&lt;olympic-medal-ranking lang="FRA">&lt;/olympic-medal-ranking></h2>
+    <olympic-medal-ranking lang="FRA">Classement des Médailles Olympiques de Paris 2024</olympic-medal-ranking>
+    
+    <hr>
+    <h2>&lt;olympic-medal-ranking flag="EU" total="all" filter="...">&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking flag="EU" total="all"
-        iocfilter="AUT,BEL,BUL,CRO,CYP,CZE,DEN,EST,FIN,FRA,GER,GRE,HUN,IRL,ITA,LAT,LTU,LUX,MLT,NED,POL,POR,ROU,SVK,SLO,ESP,SWE">
+        filter="AUT,BEL,BUL,CRO,CYP,CZE,DEN,EST,FIN,FRA,GER,GRE,HUN,IRL,ITA,LAT,LTU,LUX,MLT,NED,POL,POR,ROU,SVK,SLO,ESP,SWE">
         European Union Medal Ranking
     </olympic-medal-ranking>
     <style>
@@ -65,7 +70,7 @@
         }
     </style>
     <hr>
-    <h1>&lt;olympic-medal-ranking total="all"> Web Component listing all records</h1>
+    <h2>&lt;olympic-medal-ranking total="all">&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking total="all"></olympic-medal-ranking>
 
 </html>
