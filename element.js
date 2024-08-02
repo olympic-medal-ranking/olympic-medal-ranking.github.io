@@ -27,17 +27,22 @@ customElements.whenDefined("flag-olympic").then(() => {
             if (total == "all") total = 999;
             // ================================================================ call API
             const records = (await (await fetch(API)).json()).medalNOC;
+            // every won medal is a record with person and sport info
+            // We want only the TOTal GLObal records, sorted by medal count ranking
             const ranking = sort(records.filter(row => row.gender === "TOT" && row.sport === "GLO"))
+                // return our own data structure
                 .map(cty => ({
                     country: {
                         code: cty.org,
                         name: cty.organisation.description,
                         flag: FLAGS[cty.org]
                     },
-                    rank: cty.rank,
-                    rankEqual: cty.rankEqual,
-                    rankMedalsTotal: cty.rankTotal,
-                    rankMedalsTotalEqual: cty.rankTotalEqual,
+                    ranking: {
+                        rank: cty.rank,
+                        equal: cty.rankEqual, // "N" or "Y" same ranking as other countries
+                        total: cty.rankTotal,
+                        totalequal: cty.rankTotalEqual, // "N" or "Y" same total medals as other countries
+                    },
                     medals: {
                         gold: cty.gold,
                         silver: cty.silver,
@@ -80,13 +85,13 @@ customElements.whenDefined("flag-olympic").then(() => {
                 let usedetailflag = (incorrectflags.includes(countrycode)) ? "detail=10" : "";
                 let medalcolumns = s => `<td class="medals ${s}" part="medal medal${s}" >${result.medals[s]}</td>`;
 
-                return `<tr id=${countrycode} title=${countryname}>` +
-                    `<td class=rank part=rank>${idx + 1}</td>` +
-                    `<td class=flag><flag-${flagiso} ${usedetailflag}></flag-${flagiso}></td>` +
-                    `<td part=countrycode> ${countrycode}</td>` +
-                    `<td part=countryname >${countryname}</td>` + ["gold", "silver", "bronze", "total"].map(medalcolumns).join("") +
-                    "</tr>"
-            }).join("") +
+                    return `<tr id=${countrycode} title=${countryname}>` +
+                        `<td class=rank part=rank>${idx + 1}</td>` +
+                        `<td class=flag><flag-${flagiso} ${usedetailflag}></flag-${flagiso}></td>` +
+                        `<td part=countrycode> ${countrycode}</td>` +
+                        `<td part=countryname >${countryname}</td>` + ["gold", "silver", "bronze", "total"].map(medalcolumns).join("") +
+                        "</tr>"
+                }).join("") +
                 `</tbody></table>`;
             // ================================================================ add interactivity
             [...this.shadowRoot.querySelectorAll("[id]")].map(c => {
