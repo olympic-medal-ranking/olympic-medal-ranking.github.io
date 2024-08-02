@@ -25,6 +25,10 @@ customElements.whenDefined("flag-olympic").then(() => {
             let filter = this.getAttribute("filter"); // filter by IOC countrycode 
             let total = this.getAttribute("total") || 10;
             if (filter == "all") filter = "";
+            if (filter == "EU") {
+                filter = "AUT,BEL,BUL,CRO,CYP,CZE,DEN,EST,FIN,FRA,GER,GRE,HUN,IRL,ITA,LAT,LTU,LUX,MLT,NED,POL,POR,ROU,SVK,SLO,ESP,SWE";
+                total = "all"
+            }
             if (total == "all") total = 999;
             // ================================================================ call API
             const records = (await (await fetch(API)).json()).medalNOC;
@@ -71,19 +75,19 @@ customElements.whenDefined("flag-olympic").then(() => {
                 "</style>" +
                 // ---------------------------------------------------- create <table> HTML inside shadowDOM
                 "<table part=table><thead part=thead><tr>" +
-            `<td colspan=3><flag-${headerflag} detail=9999></flag-olympic></td>` +
+                `<td colspan=3><flag-${headerflag} detail=9999></flag-olympic></td>` +
                 `<td colspan=5 class=header part=header><slot>${games} Olympic Medal Ranking</slot></td>` +
                 "</tr></thead><tbody>" +
-            // ---------------------------------------------------- loop all JSON results
-            ranking.slice(0, total).map((country, idx) => {
-                let countrycode = country.country.code;
-                let countryrank = country.ranking.rank;
-                if (filter && !filter.includes(countrycode)) return ""; // only list countries user wants to see
-            // create country row with flag and medals
+                // ---------------------------------------------------- loop all JSON results
+                ranking.slice(0, total).map((country, idx) => {
+                    let countrycode = country.country.code;
+                    let countryrank = country.ranking.rank;
+                    if (filter && !filter.includes(countrycode)) return ""; // only list countries user wants to see
+                    // create country row with flag and medals
                     let countryname = country.country.name;
                     let flagiso = country.country.flag;
                     let incorrectflags = this.hasAttribute("detailflags")
-                        ? "ECU,MEX,KAZ,MGL,MDA,EGY,FIJ"
+                        ? "ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ"
                         : ""; // flagmeister flags that (may) need detail=10
                     let usedetailflag = (incorrectflags.includes(countrycode)) ? "detail=10" : "";
                     let medalcolumns = s => `<td class="medals ${s}" part="medal medal${s}" >${country.medals[s]}</td>`;

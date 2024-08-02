@@ -2,13 +2,18 @@
 
 <head>
     <script src="element.js"></script>
+    <script src="//file-size.github.io/element.js"></script>
     <title>Olympic Medal Ranking Web Component</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            max-width:1024px;
+            max-width: 1280px;
             margin: 0 auto;
+        }
+
+        hr {
+            margin-bottom: 3em;
         }
     </style>
 </head>
@@ -47,13 +52,13 @@
         }
     </style>
     <hr>
-    <h2>&lt;olympic-medal-ranking lang="FRA">&lt;/olympic-medal-ranking></h2>
-    <olympic-medal-ranking lang="FRA">Classement des Médailles Olympiques de Paris 2024</olympic-medal-ranking>
-    
+    <h2>&lt;olympic-medal-ranking total="5" lang="FRA">&lt;/olympic-medal-ranking></h2>
+    <olympic-medal-ranking total="5" lang="FRA">Classement des Médailles Olympiques de Paris
+        2024</olympic-medal-ranking>
+
     <hr>
-    <h2>&lt;olympic-medal-ranking flag="EU" total="all" filter="...">&lt;/olympic-medal-ranking></h2>
-    <olympic-medal-ranking flag="EU" total="all"
-        filter="AUT,BEL,BUL,CRO,CYP,CZE,DEN,EST,FIN,FRA,GER,GRE,HUN,IRL,ITA,LAT,LTU,LUX,MLT,NED,POL,POR,ROU,SVK,SLO,ESP,SWE">
+    <h2>&lt;olympic-medal-ranking flag="EU" filter="EU">&lt;/olympic-medal-ranking></h2>
+    <olympic-medal-ranking flag="EU" filter="EU">
         European Union Medal Ranking
     </olympic-medal-ranking>
     <style>
@@ -72,5 +77,27 @@
     <hr>
     <h2>&lt;olympic-medal-ranking total="all">&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking total="all"></olympic-medal-ranking>
+    <hr>
+    <h2>FlagMeister cheated a bit</h2>
+    <p>
+        It is impossible to display all detailed flags with a 30KB Web Component.
+    </p>
+    <h2>&lt;olympic-medal-ranking total="all" filter="ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ">&lt;/olympic-medal-ranking></h2>
+    <olympic-medal-ranking total="all" filter="ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ"></olympic-medal-ranking>
+    <p>
+        But Flagmeister can be instructed to load those details<br>
+        Causing additional SVG downloads ofcourse.
+    </p>
+    <h2>&lt;olympic-medal-ranking detailflags total="all"
+        filter="ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ">&lt;/olympic-medal-ranking></h2>
+    <olympic-medal-ranking detailflags total="all" filter="ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ"></olympic-medal-ranking>
+    
+    <hr>
+    <hr>
+    <section id="filesize">
+        <h1><code class="title">&lt;olympic-medal-ranking></code> minified GZIP Filesize is <i>small</i></h1>
+        <p>And could be placed as <b>inline code</b> inside the &lt;head> of your HTML page</p>
+        <file-size gz src="https://olympic-medal-ranking.github.io/element.min.js"></file-size>
+    </section>
 
 </html>
