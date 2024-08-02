@@ -8,7 +8,6 @@
 
 ![alt text](https://res.cloudinary.com/practicaldev/image/fetch/s--tL2azJal--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://i.imgur.com/PurNqpH.png)
 
-
 ### **All** required HTML (yes, all)
 
 ```html
@@ -17,7 +16,7 @@
 <olympic-medal-ranking></olympic-medal-ranking>
 ```
 
-### Optional CSS styling shadowDOM with ``::part``
+### Optional CSS styling shadowDOM with `::part`
 
 ```css
     <style>
@@ -45,18 +44,13 @@
     </style>
 ```
 
-### Optional *attributes*
+### Optional _attributes_
 
 ```html
-<olympic-medal-ranking 
-    flag="EU" 
-    total="all" 
-    filter="AUT,BEL,BUL,CRO,CYP,CZE,DEN,EST,FIN,FRA,GER,GRE,HUN,IRL,ITA,LAT,LTU,LUX,MLT,NED,POL,POR,ROU,SVK,SLO,ESP,SWE">
-  European Union Medal Ranking
-</olympic-medal-ranking>
+<olympic-medal-ranking flag="EU" filter="EU">European Union Medal Ranking</olympic-medal-ranking>
 
 <style>
-  olympic-medal-ranking[flag="EU"] {
+  olympic-medal-ranking[filter="EU"] {
     &::part(thead) {
       background: #003399;
     }
@@ -70,6 +64,5 @@
 ```
 
 ![alt text](https://res.cloudinary.com/practicaldev/image/fetch/s--b2ncys_W--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://i.imgur.com/cFMXnOD.png)
-
 
 # More live examples: https://olympic-medal-ranking.github.io

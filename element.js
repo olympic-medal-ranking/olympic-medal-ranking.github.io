@@ -12,6 +12,7 @@
 customElements.whenDefined("flag-olympic").then(() => {
     customElements.define("olympic-medal-ranking", class extends HTMLElement {
         async connectedCallback() {
+            this.innerHTML = "Loading Olympic Medal Ranking..."; // show loading message
             const LANG = this.getAttribute("lang") || "ENG";
             // API will probably be different for future Olympics
             const API = `https://olympics.com/OG2024/data/CIS_MedalNOCs~lang=${LANG}~comp=OG2024.json`;
