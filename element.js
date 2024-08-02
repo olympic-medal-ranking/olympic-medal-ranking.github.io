@@ -41,7 +41,7 @@ customElements.whenDefined("flag-olympic").then(() => {
                 `<td colspan=5 class=header part=header><slot>${games} Olympic Medal Ranking</slot></td>` +
                 "</tr></thead><tbody>" +
                 // ---------------------------------------------------- call data API
-            (await (await fetch(API)).json())
+            ((await (await fetch(API))).json())
                     // loop all JSON results
                     .results.slice(0, total).map((result, idx) => {
                         // API will probably be different for future Olympics

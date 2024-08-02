@@ -2,7 +2,7 @@
 
 **Data API by Kevin Le** - see: https://github.com/kevle1/paris-2024-olympic-api
 
-**Web Component by Danny Engelman** - see: [Dev.to blog](https://dev.to/dannyengelman/olympic-medal-ranking-web-component-2c1j-temp-slug-4981295)
+**Web Component by Danny Engelman** - see: [Dev.to blogpost](https://dev.to/dannyengelman/olympic-medal-ranking-web-component-2c1j-temp-slug-4981295)
 
 ### &lt;olympic-medal-ranking> Web Component
 
