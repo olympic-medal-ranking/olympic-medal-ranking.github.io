@@ -8,17 +8,48 @@
         }))
 })();
 customElements.whenDefined("flag-olympic").then(() => {
+    // ================================================================ generic DOM creation helper functions
+    const createElement = (tag, props = {}, children = []) => {
+        let el = Object.assign(document.createElement(tag), props);
+        el.append(...children);
+        return el;
+    }
+    const createElementTD = (className, part, innerHTML, props = {}) => createElement("td", { className, part, innerHTML, ...props })
+    // ================================================================ define <olympic-medal-ranking>
     customElements.define("olympic-medal-ranking", class extends HTMLElement {
+        static get observedAttributes() {
+            return ["sort", "filter", "total"]
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            //console.log("attr", name, oldValue, newValue, this.isConnected);
+            // all default attributes trigger this callback, we only want to execute connectedCallback later
+            this.isConnected && this.connectedCallback();
+        }
+        constructor() {
+            super()
+                .attachShadow({ // create shadowDOM so global CSS can't mess with this CSS (and this CSS doesn't "bleed out")
+                    mode: "open" // all JS programmers can access shadowDOM with .shadowRoot
+                }).append(
+                    // ---------------------------------------------------- create CSS inside shadowDOM
+                    createElement("style", {
+                        innerHTML:
+                            "table{border-collapse:collapse;font:100% Arial;border:1px solid grey}" + // style <table>
+                            "td{padding:3px;text-align:left;border-bottom:1px solid lightgrey}" + // style <td> cells
+                            ".header,.rank,.flag,.medals{text-align:center;width:10%}" + // style cells with text
+                            ".countryname{cursor:pointer}" +
+                            ".medals{cursor:n-resize}" +
+                            ".gold{background:gold}.silver{background:silver}.bronze{background:peru}" + // color medals
+                            ".flag img{aspect-ration:4/3;display:inline-block;max-width:100%;border:1px solid grey;vertical-align:top}" // style flag IMG
+                    }),
+                    // ---------------------------------------------------- <table>
+                    this.table = createElement("table", {
+                        part: "table"
+                    }) // createElement <table>
+                ); // append shadow
+        }// constructor
+
         async connectedCallback() {
             setTimeout(() => this.connectedCallback(), 3e5);
-            // ================================================================ generic DOM creation helper functions
-            const createElement = (tag, props = {}, children = []) => {
-                let el = Object.assign(document.createElement(tag), props);
-                el.append(...children);
-                return el;
-            }
-            const createElementTD = (className, part, innerHTML, props = {}) => createElement("td", { className, part, innerHTML, ...props })
-
             // ================================================================ application data
             const LANG = this.getAttribute("lang") || "ENG";
             // API will probably be different for future Olympics
@@ -26,7 +57,9 @@ customElements.whenDefined("flag-olympic").then(() => {
             //const LANGS = "ENG,FRA,GER,SPA,ITA,CHI"; // optional UI languages
             const FLAGS = "AFG:af,ALB:al,ALG:dz,AND:ad,ANG:ao,ANT:ag,ARG:ar,ARM:am,ARU:aw,ASA:as,AUS:au,AUT:at,AZE:az,BAH:bs,BRN:bh,BAN:bd,BAR:bb,BLR:by,BEL:be,BEN:bj,BER:bm,BHU:bt,BOL:bo,BIH:ba,BOT:bw,BRA:br,IVB:vg,BRU:bn,BUL:bg,BUR:bf,BDI:bi,CPV:cv,CAM:kh,CMR:cm,CAN:ca,CAY:ky,CAF:cf,CHA:td,CHI:cl,CHN:cn,COL:co,COM:km,COD:cd,COK:ck,CRC:cr,CIV:ci,CRO:hr,CUB:cu,CYP:cy,CZE:cz,DEN:dk,DJI:dj,DMA:dm,DOM:do,ECU:ec,EGY:eg,ESA:sv,GEQ:gq,ERI:er,EST:ee,ETH:et,FIJ:fj,FIN:fi,FRA:fr,GAB:ga,GAM:gm,GEO:ge,GER:de,GHA:gh,GRE:gr,GRN:gd,GUM:gu,GUA:gt,GUI:gn,GBS:gw,GUY:gy,HAI:ht,HON:hn,HKG:hk,HUN:hu,ISL:is,IND:in,INA:id,IRI:ir,IRQ:iq,IRL:ie,ISR:il,ITA:it,JAM:jm,JPN:jp,JOR:jo,KAZ:kz,KEN:ke,PRK:kp,KOR:kr,KOS:xk,KUW:kw,KGZ:kg,LAO:la,LAT:lv,LBN:lb,LES:ls,LBR:lr,LBA:ly,LIE:li,LTU:lt,LUX:lu,MAD:mg,MAW:mw,MAS:my,MDV:mv,MLI:ml,MLT:mt,MTN:mr,MRI:mu,MEX:mx,MDA:md,MGL:mn,MNG:mn,MNE:me,MAR:ma,MOZ:mz,MYA:mm,NAM:na,NRU:nr,NEP:np,NED:nl,NZL:nz,NCA:ni,NIG:ng,NOR:no,OMA:om,PAK:pk,PLW:pw,PLE:ps,PAN:pa,PNG:pg,PAR:py,PER:pe,PHI:ph,POL:pl,POR:pt,PUR:pr,QAT:qa,ROU:ro,RUS:ru,RWA:rw,SKN:kn,LCA:lc,VIN:vc,SAM:ws,SMR:sm,STP:st,KSA:sa,SEN:sn,SRB:rs,SEY:sc,SLE:sl,SGP:sg,SVK:sk,SLO:si,SOL:sb,SOM:so,RSA:za,ESP:es,SRI:lk,SUD:sd,SUR:sr,SWZ:sz,SWE:se,SUI:ch,SYR:sy,TPE:tw,TJK:tj,TAN:tz,THA:th,TLS:tl,TOG:tg,TGA:to,TRI:tt,TUN:tn,TUR:tr,TKM:tm,UGA:ug,UKR:ua,UAE:ae,GBR:gb,USA:us,URU:uy,UZB:uz,VAN:vu,VEN:ve,VIE:vn,ISV:vi,YEM:ye,ZAM:zm,ZIM:zw"
                 .split(",").map(c => c.split(":")).reduce((obj, [a3, a2]) => (obj[a3] = a2, obj), {});
-            const sortby = { // sortBy functions
+            const DETAILEDFLAGS = "ec,kz,mx,mn,md,eg,fj,do"; // Flagmeister flags that need for detail!
+            // sortBy functions            
+            const sortby = {
                 gold: arr => arr.sort((a, b) => b.gold - a.gold || b.silver - a.silver || b.bronze - a.bronze || b.total - a.total),
                 silver: arr => arr.sort((a, b) => b.silver - a.silver || b.gold - a.gold || b.bronze - a.bronze || b.total - a.total),
                 bronze: arr => arr.sort((a, b) => b.bronze - a.bronze || b.gold - a.gold || b.silver - a.silver || b.total - a.total),
@@ -97,67 +130,53 @@ customElements.whenDefined("flag-olympic").then(() => {
             }))
             //.map((x, idx) => (console.log(idx, x), x));
             console.log(`%c ${ranking.length} countries won medals `, "background:gold");
-            // ================================================================ create HTML
-            (this.shadowRoot || this
-                .attachShadow({ // create shadoDOM so global CSS can't mess with this CSS (and this CSS doesn't "bleed out")
-                    mode: "open" // all JS programmers can access shadowDOM with .shadowRoot
-                })).append(
-                // ---------------------------------------------------- create CSS inside shadowDOM
-                    createElement("style", {
-                        innerHTML:
-                            "table{border-collapse:collapse;font:100% Arial;border:1px solid grey}" + // style <table>
-                            "td{padding:3px;text-align:left;border-bottom:1px solid lightgrey}" + // style <td> cells
-                            ".header,.rank,.flag,.medals{text-align:center;width:10%}" + // style cells with text
-                            ".gold{background:gold}.silver{background:silver}.bronze{background:peru}" + // color medals
-                            ".flag img{aspect-ration:4/3;display:inline-block;max-width:100%;border:1px solid grey;vertical-align:top}" // style flag IMG
+            // ================================================================ create <table>
+            this.table.replaceChildren(
+                createElement("thead", {
+                    part: "thead"
+                }, [
+                    createElement("tr", {
+                        // colspan can not be set as PROPERTY on TD Element, innerHTML is shortest then
+                        innerHTML: `<td colspan=3><flag-${headerflag} detail=10000></flag-${headerflag}></td>` +
+                            `<td colspan=5 class=header part=header><slot>${games}</slot></td>`
                     }),
-                    // ---------------------------------------------------- <table>
-                    createElement("table", {
-                        part: "table"
-                    }, [
-                        createElement("thead", {
-                            part: "thead"
-                        }, [
-                            createElement("tr", {
-                                // colspan can not be set as HTMLElement property, innerHTML is shortest then
-                                innerHTML: `<td colspan=3><flag-${headerflag} detail=10000></flag-${headerflag}></td>` +
-                                    `<td colspan=5 class=header part=header><slot>${games}</slot></td>`
-                            }),
-                        ]),
-                        createElement("tbody", {
-                            part: "tbody"
-                        }, [
+                ]),
+                createElement("tbody", {
+                    part: "tbody"
+                }),
                 // ---------------------------------------------------- loop all JSON results
-                            ...ranking.slice(0, total).map((country, idx) => {
-                                const { code, name, flag } = country.country;
-                                if (filter && !filter.includes(code)) return ""; // only list countries user wants to see
-
-                                return createElement("tr", {
-                                    id: code,
-                                    title: name,
-                                    onclick: _ => document.location = "//olympics.com/en/paris-2024/medals/" + c.title.toLowerCase()
-                                }, [
-                                    createElementTD("rank", "rank", sort == "total" ? country.ranking.total : country.ranking.rank),
-                                    createElementTD("flag", "flag",
-                                        `<flag-${flag} ` +
-                                        ((this.hasAttribute("detailflags")
-                                            ? "ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ,DOM" // flagmeister flags that (may) need detail=1 pixel
-                                            : "").includes(code) ? "detail=1" : "") + // incorrect flags load detail SVG when over 9 pixels
-                                        `></flag-${flag}>`
-                                    ),
-                                    createElementTD("countrycode", "countrycode", code),
-                                    createElementTD("countryname", "countryname", name),
-                                    ...["gold", "silver", "bronze", "total"]
-                                        .map(s => createElementTD("medals " + s, "medal medal" + s, country.medals[s], {
-                                            onclick: evt => {
-
-                                            }
-                                        }))
-                                ])
-                            })
-                        ])
-                    ]),
-                );
+                ...ranking.slice(0, total).map((country, idx) => {
+                    const { code, name, flag } = country.country;
+                    if (filter && !filter.includes(code)) return ""; // only list countries user wants to see
+                    else return createElement("tr", {
+                        // id: code,
+                        // title: name,
+                        onclick: _ => document.location = "//olympics.com/en/paris-2024/medals/" + name.toLowerCase()
+                    }, [
+                        // create 8 colums in the row
+                        createElementTD("rank", "rank", sort == "total" ? country.ranking.total : country.ranking.rank),
+                        createElementTD("flag", "flag",
+                            `<flag-${flag} ` +
+                            ((this.hasAttribute("detailflags") && DETAILEDFLAGS.includes(flag))
+                                ? "detail=1" // force loading correct SVG flag
+                                : "" // incorrect flags load detail SVG when over 9 pixels
+                            ) +
+                            `></flag-${flag}>`
+                        ),
+                        createElementTD("countrycode", "countrycode", code),
+                        createElementTD("countryname", "countryname", name),
+                        // create 4 medal TD
+                        ...["gold", "silver", "bronze", "total"]
+                            .map(s => createElementTD("medals " + s, "medal medal" + s, country.medals[s], {
+                                onclick: e => {
+                                    e.stopPropagation();
+                                    console.warn(s);
+                                    this.setAttribute("sort", s);
+                                }
+                            }))
+                    ])// createElement <tr>
+                }) // .map all countries
+            ); // replaceChildren tbody
         } // connectedCallback
     }); // define <olympic-medal-ranking>
 }); // whenDefined("flag-olympic")
