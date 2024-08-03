@@ -10,6 +10,7 @@
 customElements.whenDefined("flag-olympic").then(() => {
     customElements.define("olympic-medal-ranking", class extends HTMLElement {
         async connectedCallback() {
+            setTimeout(() => this.connectedCallback(), 3e5);
             //BUG!this.innerHTML = "Loading Olympic Medal Ranking..."; // show loading message
             const LANG = this.getAttribute("lang") || "ENG";
             // API will probably be different for future Olympics
