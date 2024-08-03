@@ -82,19 +82,19 @@ customElements.whenDefined("flag-olympic").then(() => {
                 // ---------------------------------------------------- loop all JSON results
                 ranking.slice(0, total).map((country, idx) => {
                     const countrycode = country.country.code;
-                    const countryrank = country.ranking.rank;
                     if (filter && !filter.includes(countrycode)) return ""; // only list countries user wants to see
                     // create country row with flag and medals
                     const countryname = country.country.name;
-                    const incorrectflags = this.hasAttribute("detailflags") ?
-                        "ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ" :
-                        ""; // flagmeister flags that (may) need detail=10
-                    const usedetailflag = (incorrectflags.includes(countrycode)) ? "detail=10" : "";
-                    const flagiso = `<flag-${country.country.flag} ${usedetailflag}></flag-${country.country.flag}>`;
+                    const incorrectflags = (this.hasAttribute("detailflags") ?
+                        "ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ,DOM" :
+                        ""); // flagmeister flags that (may) need detail=10
+                    const flagiso = `<flag-${country.country.flag} ${incorrectflags
+                        .includes(countrycode) ? "detail=1" : "" // incorrect flags load detail SVG when over 9 pixels
+                        }></flag-${country.country.flag}>`;
                     const medalcolumns = s => `<td class="medals ${s}" part="medal medal${s}" >${country.medals[s]}</td>`;
 
                     return `<tr id=${countrycode} title=${countryname}>` +
-                        `<td class=rank part=rank>${countryrank}</td>` +
+                        `<td class=rank part=rank>${country.ranking.rank}</td>` +
                         `<td class=flag>${flagiso}</td>` +
                         `<td part=countrycode> ${countrycode}</td>` +
                         `<td part=countryname >${countryname}</td>` + ["gold", "silver", "bronze", "total"].map(medalcolumns).join("") +
