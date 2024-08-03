@@ -36,7 +36,7 @@
             }
     
             &::part(header) {
-                font-size: 230%;
+                font-size: 200%;
                 color: goldenrod;
                 text-shadow: 1px 1px 1px black;
             }
@@ -53,6 +53,9 @@
             }
         }
     </style>
+    <hr>
+    <h2>&lt;olympic-medal-ranking sort="total">&lt;/olympic-medal-ranking></h2>
+    <olympic-medal-ranking sort="total"></olympic-medal-ranking>
     <hr>
     <h2>&lt;olympic-medal-ranking total="5" lang="FRA">&lt;/olympic-medal-ranking></h2>
     <p>
@@ -71,7 +74,7 @@
     <hr>
     <h2>&lt;olympic-medal-ranking flag="EU" filter="EU">&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking flag="EU" filter="EU">
-        European Union Medal Ranking
+        European Union<br>Medal Ranking
     </olympic-medal-ranking>
     <style>
         olympic-medal-ranking[flag="EU"] {
