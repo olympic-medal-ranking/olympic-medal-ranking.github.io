@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            max-width: 1280px;
+            max-width: 1440px;
             margin: 0 auto;
             padding: 1em;
         }
@@ -61,11 +61,18 @@
         }
     </style>
     <hr>
-    <h2>&lt;olympic-medal-ranking sort="total">&lt;/olympic-medal-ranking></h2>
-    <olympic-medal-ranking sort="total"></olympic-medal-ranking>
-    <hr>
-    <h2>&lt;olympic-medal-ranking sort="silver">&lt;/olympic-medal-ranking></h2>
-    <olympic-medal-ranking sort="silver"></olympic-medal-ranking>
+    <section id="">
+        <h2>&lt;olympic-medal-ranking sort="gold">&lt;/olympic-medal-ranking></h2>
+        <h2>&lt;olympic-medal-ranking sort="silver">&lt;/olympic-medal-ranking></h2>
+        <h2>&lt;olympic-medal-ranking sort="bronze">&lt;/olympic-medal-ranking></h2>
+        <h2>&lt;olympic-medal-ranking sort="total">&lt;/olympic-medal-ranking></h2>
+        <div style="display:grid;grid:1fr/repeat(4,1fr)">
+            <olympic-medal-ranking sort="gold">Gold</olympic-medal-ranking>
+            <olympic-medal-ranking sort="silver">Silver</olympic-medal-ranking>
+            <olympic-medal-ranking sort="bronze">Bronze</olympic-medal-ranking>
+            <olympic-medal-ranking sort="total">Total</olympic-medal-ranking>
+        </div>
+        </section>
     <hr>
     <h2>&lt;olympic-medal-ranking total="5" lang="FRA">&lt;/olympic-medal-ranking></h2>
     <p>
