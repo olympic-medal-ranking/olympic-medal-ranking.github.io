@@ -49,8 +49,8 @@
 | attribute | description | values
 | --- | --- | --- |
 | total | number of countries to display | value or "all" |  
-| flag | replace Olympic logo with flag | ISO 2-letter flag code |
-| sort | sort by column | (default) "gold" or "total" |
+| flag | replace Olympic logo with flag | [ISO-3166 Alpha-2 flag codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) or [Flagmeister flag codes](https://flagmeister.github.io) |
+| sort | sort by column | "gold" (default) or "total" , "silver" , "bronze" |
 | filter | filter by IOC country codes | "EU" for All European Union countries |
 | lang | IOC language | "ENG" (default) <a href="https://odf.olympictech.org/2024-Paris/codes/HTML/og_cc/Language.htm">IOC language codes</a> |
 | games | ready for future Olympic games | "Paris 2024" (default) |
