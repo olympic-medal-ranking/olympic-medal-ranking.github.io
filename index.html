@@ -22,7 +22,7 @@
     <h1>One Web Component displays Olympic Medal Ranking</h1>
     <h3><a href="https://github.com/olympic-medal-ranking/olympic-medal-ranking.github.io">
             Documentation and code available on GitHub</a></h3>
-
+    
     <h2>&lt;olympic-medal-ranking>&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking></olympic-medal-ranking>
     <style id="PARTS">
@@ -31,18 +31,17 @@
             &::part(table) {
                 max-width: 550px;
             }
-
+    
             &::part(header) {
-                font-size: 150%;
+                font-size: 230%;
                 color: goldenrod;
-                background: lightgrey;
                 text-shadow: 1px 1px 1px black;
             }
-
+    
             &::part(medal) {
                 font-weight: bold;
             }
-
+    
             &::part(rank),
             &::part(countrycode),
             &::part(medaltotal) {
@@ -53,9 +52,19 @@
     </style>
     <hr>
     <h2>&lt;olympic-medal-ranking total="5" lang="FRA">&lt;/olympic-medal-ranking></h2>
+    <p>
+        <a href="https://odf.olympictech.org/2024-Paris/codes/HTML/og_cc/Language.htm">IOC language codes</a>
+    </p>
     <olympic-medal-ranking total="5" lang="FRA">Classement des Médailles Olympiques de Paris
         2024</olympic-medal-ranking>
-
+    <style>
+        olympic-medal-ranking[lang="FRA"] {
+            &::part(header) {
+                font-size: 170%;
+                font-weight: bold;
+            }
+        }
+    </style>
     <hr>
     <h2>&lt;olympic-medal-ranking flag="EU" filter="EU">&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking flag="EU" filter="EU">
@@ -66,7 +75,7 @@
             &::part(thead) {
                 background: #003399;
             }
-
+    
             &::part(header) {
                 background: inherit;
                 color: gold;
@@ -91,13 +100,4 @@
     <h2>&lt;olympic-medal-ranking detailflags total="all"
         filter="ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ">&lt;/olympic-medal-ranking></h2>
     <olympic-medal-ranking detailflags total="all" filter="ECU,KAZ,MEX,KAZ,MGL,MDA,EGY,FIJ"></olympic-medal-ranking>
-    
-    <hr>
-    <hr>
-    <section id="filesize">
-        <h1><code class="title">&lt;olympic-medal-ranking></code> minified GZIP Filesize is <i>small</i></h1>
-        <p>And could be placed as <b>inline code</b> inside the &lt;head> of your HTML page</p>
-        <file-size gz src="https://olympic-medal-ranking.github.io/element.min.js"></file-size>
-    </section>
-
 </html>
