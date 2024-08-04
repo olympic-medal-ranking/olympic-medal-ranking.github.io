@@ -40,7 +40,7 @@
                                 "table{border-collapse:collapse;font:100% Arial;border:1px solid grey}" + // style <table>
                                 "td{padding:3px;text-align:left;border-bottom:1px solid lightgrey}" + // style <td> cells
                                 ".header,.rank,.flag,.medals{text-align:center;width:10%}" + // style cells with text
-                                ".rankEqual{opacity:50%}" +
+                                // removed ".rankEqual{opacity:50%}" +
                                 ".name{cursor:pointer}" +
                                 ".medals{cursor:n-resize}" +
                                 ".gold{background:gold}.silver{background:silver}.bronze{background:peru}" + // color medals
@@ -113,7 +113,7 @@
 
                 // We want only the TOTal GLObal records, sorted by medal count ranking
                 const ranking = (sortby[sort] || sortby.gold)(
-                    records.filter(row => row.gender === "TOT" && row.sport === "GLO")
+                    records.filter(row => row.gender + row.sport == "TOTGLO")
                 )
                     // convert all country records to our own format
                     .map(record => ({
@@ -172,7 +172,7 @@
                                     // tr.append: 8 column/TD elements
                                             // createElementTD ( class , part , innerHTML , [properties] )
                                             createElementTD(
-                                            /* class */ "rank " + (country.ranking.equal ? "rankEqual" : ""),
+                                            /* class */ "rank",
                                             /* part */ "rank",
                                             /* html */ rank
                                             ),
@@ -207,9 +207,9 @@
             flag(IOC_code) {
                 // ================================================================ Olypics.com ICO code to ISO flag code
                 // lets be smart here; if the first 2 letters of the IOC code match the ISO flag code, we can use that
-                // let ct = "";
+                // let condensedString = "";
                 this.flagmap = this.flagmap ||  // cache map Object
-                    // 1378 Bytes - ALL IOC codes to ISO flag code - Use this to find 2 letters in CT let variable
+                // 1378 Bytes - ALL IOC codes to ISO flag code - Use this to find 2 letters in condensedString variable
                     //"AFG:af,ALB:al,ALG:dz,AND:ad,ANG:ao,ANT:ag,ARG:ar,ARM:am,ARU:aw,ASA:as,AUS:au,AUT:at,AZE:az,BAH:bs,BRN:bh,BAN:bd,BAR:bb,BLR:by,BEL:be,BEN:bj,BER:bm,BHU:bt,BOL:bo,BIH:ba,BOT:bw,BRA:br,IVB:vg,BRU:bn,BUL:bg,BUR:bf,BDI:bi,CPV:cv,CAM:kh,CMR:cm,CAN:ca,CAY:ky,CAF:cf,CHA:td,CHI:cl,CHN:cn,COL:co,COM:km,COD:cd,COK:ck,CRC:cr,CIV:ci,CRO:hr,CUB:cu,CYP:cy,CZE:cz,DEN:dk,DJI:dj,DMA:dm,DOM:do,ECU:ec,EGY:eg,ESA:sv,GEQ:gq,ERI:er,EST:ee,ETH:et,FIJ:fj,FIN:fi,FRA:fr,GAB:ga,GAM:gm,GEO:ge,GER:de,GHA:gh,GRE:gr,GRN:gd,GUM:gu,GUA:gt,GUI:gn,GBS:gw,GUY:gy,HAI:ht,HON:hn,HKG:hk,HUN:hu,ISL:is,IND:in,INA:id,IRI:ir,IRQ:iq,IRL:ie,ISR:il,ITA:it,JAM:jm,JPN:jp,JOR:jo,KAZ:kz,KEN:ke,PRK:kp,KOR:kr,KOS:xk,KUW:kw,KGZ:kg,LAO:la,LAT:lv,LBN:lb,LES:ls,LBR:lr,LBA:ly,LIE:li,LTU:lt,LUX:lu,MAD:mg,MAW:mw,MAS:my,MDV:mv,MLI:ml,MLT:mt,MTN:mr,MRI:mu,MEX:mx,MDA:md,MGL:mn,MNG:mn,MNE:me,MAR:ma,MOZ:mz,MYA:mm,NAM:na,NRU:nr,NEP:np,NED:nl,NZL:nz,NCA:ni,NIG:ng,NOR:no,OMA:om,PAK:pk,PLW:pw,PLE:ps,PAN:pa,PNG:pg,PAR:py,PER:pe,PHI:ph,POL:pl,POR:pt,PUR:pr,QAT:qa,ROU:ro,RUS:ru,RWA:rw,SKN:kn,LCA:lc,VIN:vc,SAM:ws,SMR:sm,STP:st,KSA:sa,SEN:sn,SRB:rs,SEY:sc,SLE:sl,SGP:sg,SVK:sk,SLO:si,SOL:sb,SOM:so,RSA:za,ESP:es,SRI:lk,SUD:sd,SUR:sr,SWZ:sz,SWE:se,SUI:ch,SYR:sy,TPE:tw,TJK:tj,TAN:tz,THA:th,TLS:tl,TOG:tg,TGA:to,TRI:tt,TUN:tn,TUR:tr,TKM:tm,UGA:ug,UKR:ua,UAE:ae,GBR:gb,USA:us,URU:uy,UZB:uz,VAN:vu,VEN:ve,VIE:vn,ISV:vi,YEM:ye,ZAM:zm,ZIM:zw"
                     //  825 Bytes - IOC codes to ISO flag for IOC that are NOT the first 2 letters
                     "ALG:dz,AND:ad,ANG:ao,ANT:ag,ARM:am,ARU:aw,AUT:at,BAH:bs,BRN:bh,BAN:bd,BAR:bb,BLR:by,BEN:bj,BER:bm,BHU:bt,BIH:ba,BOT:bw,IVB:vg,BRU:bn,BUL:bg,BUR:bf,BDI:bi,CPV:cv,CAM:kh,CAY:ky,CAF:cf,CHA:td,CHI:cl,CHN:cn,COM:km,COD:cd,COK:ck,CRO:hr,DEN:dk,ESA:sv,GEQ:gq,EST:ee,FIJ:fj,GAM:gm,GER:de,GRN:gd,GUA:gt,GUI:gn,GBS:gw,GUY:gy,HAI:ht,HON:hn,INA:id,IRQ:iq,IRL:ie,ISR:il,JAM:jm,KAZ:kz,PRK:kp,KOR:kr,KOS:xk,KUW:kw,LAT:lv,LES:ls,LBR:lr,LBA:ly,MAD:mg,MAW:mw,MAS:my,MDV:mv,MLT:mt,MTN:mr,MRI:mu,MEX:mx,MGL:mn,MNE:me,MOZ:mz,MYA:mm,NEP:np,NED:nl,NCA:ni,NIG:ng,PAK:pk,PLW:pw,PLE:ps,PNG:pg,PAR:py,POL:pl,POR:pt,PUR:pr,SKN:kn,VIN:vc,SAM:ws,KSA:sa,SEN:sn,SRB:rs,SEY:sc,SVK:sk,SLO:si,SOL:sb,RSA:za,SRI:lk,SUD:sd,SUR:sr,SWZ:sz,SWE:se,SUI:ch,TPE:tw,TAN:tz,TOG:tg,TGA:to,TRI:tt,TUN:tn,TUR:tr,TKM:tm,UKR:ua,UAE:ae,URU:uy,VAN:vu,VIE:vn,ISV:vi,ZAM:zm,ZIM:zw"
@@ -219,13 +219,13 @@
                             ioc2iso[a3] = a2;
                             // list IOC codes where the FIRST 2 LETTERS are NOT the ISO code
                             // if (a3.toLowerCase().substring(0, 2) != a2) {
-                            //     ct += a3 + ":" + a2 + ",";
+                            //     condensedString += a3 + ":" + a2 + ",";
                             // }
                             return ioc2iso
                         }, {
                             // ioc2iso Object
                         });
-                // console.log(ct.length, ct);
+                // console.log(condensedString.length, condensedString);
                 // return mapped code OR first 2 Letters
                 return this.flagmap[IOC_code] || IOC_code.toLowerCase().substring(0, 2); // ISO flag code
             }
