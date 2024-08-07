@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <script src="element.js"></script>
+    <script src="//file-size.github.io/element.js"></script>
+    <title>Olympic Medal Ranking Web Component</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 1em;
+        }
+
+        hr {
+            margin-bottom: 3em;
+        }
+
+        .columns {
+            display: grid;
+            grid: 1fr/1fr 1fr;
+            gap: 1em;
+        }
+    </style>
+    <style id="PARTS">
+        /* global CSS styles pre-defined "parts" inside shadowDOM */
+        olympic-medal-ranking {
+            &::part(table) {
+                width: 650px;
+            }
+
+            &::part(header) {
+                font-size: 200%;
+                color: goldenrod;
+                text-shadow: 1px 1px 1px black;
+            }
+
+            &::part(medal) {
+                font-weight: bold;
+            }
+
+            &::part(rank),
+            &::part(countrycode),
+            &::part(medaltotal) {
+                font-weight: normal;
+                color: grey;
+            }
+
+            &::part(USA) {
+                background: lightcoral;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Paris 2024 medal ranking <i>per capita</i></h1>
+    <p>The top 10 is different</p>
+    <div class="columns">
+        <olympic-medal-ranking total="10" score="gold" sort="population">only Gold medals</olympic-medal-ranking>
+        <olympic-medal-ranking total="10" score="421" sort="population">421 score for all 3
+            medals</olympic-medal-ranking>
+    </div>
+    <h1>All medals</h1>
+    <div class="columns">
+        <olympic-medal-ranking total="all" score="gold" sort="population">only Gold medals</olympic-medal-ranking>
+        <olympic-medal-ranking total="all" score="421" sort="population">421 score for all
+            medals</olympic-medal-ranking>
+    </div>
+
+</html>
