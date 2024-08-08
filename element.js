@@ -75,10 +75,8 @@
                 const API = "https://olympics.com/OG2024/data/CIS_MedalNOCs~lang=" + (this.getAttribute("lang") || "ENG") + "~comp=OG2024.json";
                 const OLYMPICSITELINK = name => "https://olympics.com/en/paris-2024/medals/" + name.toLowerCase()
 
-                const DETAILEDFLAGS = "ec,kz,mx,mn,md,eg,fj,do,ug"; // Flagmeister flags that need more detail!
-
                 // ================================================================ sortBy functions
-                const sortby = {
+                const sortBy = {
                     gold: arr => arr.sort((a, b) => b.gold - a.gold || b.silver - a.silver || b.bronze - a.bronze || b.total - a.total),
                     silver: arr => arr.sort((a, b) => b.silver - a.silver || b.gold - a.gold || b.bronze - a.bronze || b.total - a.total),
                     bronze: arr => arr.sort((a, b) => b.bronze - a.bronze || b.gold - a.gold || b.silver - a.silver || b.total - a.total),
@@ -88,14 +86,17 @@
                 let headerflag = this.getAttribute("flag") || "olympic"; // header shows Olympic flag by default
                 let games = this.getAttribute("games") || "Paris 2024"; // ready for games="LA 2028" attribute
                 let sort = this.getAttribute("sort") || "gold"; // default sort
-                let filter = this.getAttribute("filter"); // filter by IOC countrycode 
                 let total = this.getAttribute("total") || 10; // nr of records to show
                 let score = this.getAttribute("score") || "total"; // nr of records to show
-                if (filter == "all") filter = "";
-                if (filter == "EU") {
-                    filter = "AUT,BEL,BUL,CRO,CYP,CZE,DEN,EST,FIN,FRA,GER,GRE,HUN,IRL,ITA,LAT,LTU,LUX,MLT,NED,POL,POR,ROU,SVK,SLO,ESP,SWE";
-                    total = "all"
-                }
+
+                let filter = this.getAttribute("filter"); // filter by IOC countrycode 
+                if (filter == "all")
+                    filter = "";
+                else
+                    if (filter == "EU") {
+                        filter = "AUT,BEL,BUL,CRO,CYP,CZE,DEN,EST,FIN,FRA,GER,GRE,HUN,IRL,ITA,LAT,LTU,LUX,MLT,NED,POL,POR,ROU,SVK,SLO,ESP,SWE";
+                        total = "all"
+                    }
                 if (sort == "population") total = this.getAttribute("total") || 999;
                 if (total == "all") total = 999; // presuming there are not more than 99 countries winning medals
 
@@ -163,7 +164,7 @@
                 //console.log(countrymedals);
 
                 // We want only the TOTal GLObal records, sorted by medal count ranking
-                const ranking = (sortby[sort] || sortby.gold)(
+                const ranking = (sortBy[sort] || sortBy.gold)(
                     records.filter(record => record.gender + record.sport == "TOTGLO")
                 )
                     // convert all country records to our own format
@@ -237,10 +238,14 @@
                                                 "flag",
                                                 "flag",
                                                 "<flag-" + flag +
-                                                ((this.hasAttribute("detailflags") && DETAILEDFLAGS.includes(flag))
+                                                ((this.hasAttribute("detailflags")
+                                                    &&
+                                                    "dm,do,do,ec,eg,fj,gt,kz,md,mn,mx,ug" // Flagmeister flags that need more detail!
+                                                        .includes(flag))
                                                     ? " detail=1" // force loading correct SVG flag
                                                     : "" // incorrect flags load detail SVG when over 9 pixels
-                                                ) + "></flag-" + flag + ">"
+                                                )
+                                                + "></flag-" + flag + ">"
                                             ),
                                             createElementTD("code", "code", code),
                                             createElementTD("name", "name", name),
@@ -330,7 +335,7 @@
                 mpc = this.getAttribute("score") / population * 1e6;
                 this.title = this.getAttribute("score") + " / " + population;
                 // store as property on TR for later sorting and show value in TD
-                tr[attr] = this.innerText = mpc.toFixed(2);
+                tr[attr] = this.innerText = mpc.toFixed(3);
                 // create a sort() method within mpc method so we can reuse scoped variables tbody, attr, this
                 this.sort = (asc = this.hasAttribute("desc")) => tbody.replaceChildren(
                     ...[...tbody.rows].sort((tr1, tr2) => (tr1[attr] - tr2[attr]) * (asc ? 1 : -1))
